@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    
-
     <div class="column is-half is-offset-one-quarter">
-      
-    <h1 class="title">Pokedex</h1>
+    <div class="title"><p>Pokedex VueJs</p><br>
+    <img src="https://www.pngkey.com/png/detail/241-2412291_kanto-pokedex.png" width="300" height="auto"></div> <br>
     <input class="input is-rounded" type="text" placeholder="Pesquisar Pokemon" v-model="busca">
     <button class="button is-fullwidth is-success" id="buscaBtn" @click="buscar">Buscar</button>
       <div v-for="(poke, index) in filteredPokemons" :key="poke.url">
@@ -32,7 +30,6 @@ export default {
   created: function(){
     //1118
     axios.get("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0").then((res) => {
-        console.log(res.data.results);
         this.pokemons = res.data.results;
         this.filteredPokemons = res.data.results
       })
@@ -57,9 +54,7 @@ export default {
     }
   },
 
-  
-
-  // computed: {
+    // computed: {
   //   resBusca: function(){
   //     if(this.busca == '' || this.busca == ' '){
   //       return this.pokemons
@@ -81,13 +76,16 @@ export default {
   margin-top: 60px;
 }
 
+body {
+  background-color: #f6f6f6;
+}
+
 #buscaBtn {
   margin-top: 2%;
 }
 
 .title{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  
 }
 
 </style>
