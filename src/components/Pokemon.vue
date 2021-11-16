@@ -15,8 +15,6 @@
                 <p  class="subtitle is-6"> {{ pokemon.type }} </p>
                 <p  class="subtitle is-6"> {{ pokemon.type2}} </p>
             </div>
-            
-
           </div>
         </div>
 
@@ -37,7 +35,12 @@ export default {
   created: function () {
     axios.get(this.url).then((res) => {
       this.pokemon.type = res.data.types[0].type.name;
-      this.pokemon.type2 = res.data.types[1].type.name;
+      try {
+          this.pokemon.type2 = res.data.types[1].type.name;
+      } catch (error) {
+        console.log(error)
+      }
+     
 
       this.pokemon.front = res.data.sprites.front_default;
       this.pokemon.back = res.data.sprites.back_default;
@@ -87,10 +90,13 @@ export default {
     text-transform: capitalize;
     display: flex;
     justify-content: center;
+    border: 2px solid grey;
 }   
 
 .tipos p{
     padding: 5px;
+    margin-bottom: 0 !important;
+   
 }
 
 #pokemons{
