@@ -29,7 +29,7 @@ export default {
 
   created: function(){
     //1118
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0").then((res) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=898&offset=0").then((res) => {
         this.pokemons = res.data.results;
         this.filteredPokemons = res.data.results
       })
